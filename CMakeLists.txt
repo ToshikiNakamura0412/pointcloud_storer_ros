@@ -5,7 +5,6 @@ add_compile_options(-std=c++17 -O2 -g)
 
 find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
-  icp_matching_ros
   nav_msgs
   pcl_conversions
   pcl_ros
@@ -13,8 +12,8 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   tf2_eigen
   tf2_geometry_msgs
+  icp_matching_ros
 )
-find_package(PCL REQUIRED)
 
 ###################################
 ## catkin specific configuration ##
@@ -27,11 +26,10 @@ catkin_package()
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
-  ${PCL_INCLUDE_DIRS}
 )
 
 add_executable(pointcloud_storer_node src/pointcloud_storer.cpp)
-target_link_libraries(pointcloud_storer_node ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+target_link_libraries(pointcloud_storer_node ${catkin_LIBRARIES})
 
 #############
 ## Testing ##
