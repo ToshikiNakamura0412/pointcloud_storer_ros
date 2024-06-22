@@ -5,10 +5,10 @@
 
 ROS package for storing pointclouds and poses
 
-The demo assumes that a portion of the scan data has been acquired
+The demo assumes that a portion of the scan data has been acquired, so the scan data is extracted with the `pointcloud_angle_filter` node in [amr_navigation_utils_ros](https://github.com/ToshikiNakamura0412/amr_navigation_utils_ros.git) package
 
 <p align="center">
-  <img src="https://github.com/ToshikiNakamura0412/amr_navigation_gifs/blob/master/images/pointcloud_storer.gif" height="320px"/>
+  <img src="https://github.com/ToshikiNakamura0412/amr_navigation_gifs/blob/master/images/pointcloud_storer_demo.gif" height="320px"/>
 </p>
 
 ## Environment
