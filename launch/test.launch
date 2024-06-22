@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find pointcloud_storer_ros)/launch/pointcloud_storer.launch">
+        <arg name="output" value="screen"/>
+        <arg name="cloud_topic" value="/cloud_filtered"/>
+        <arg name="robot_pose_topic" value="/emcl_pose"/>
+    </include>
+
+    <include file="$(find emcl_ros)/launch/emcl.launch">
+        <arg name="use_cloud" value="true"/>
+    </include>
+    <include file="$(find scan_to_pcl_ros)/launch/scan_to_pcl.launch"/>
+    <include file="$(find amr_navigation_utils_ros)/launch/pointcloud_angle_filter.launch"/>
+    <include file="$(find raycast_mapping_ros)/launch/raycast_mapping.launch">
+        <arg name="cloud_topic" value="stored_cloud"/>
+    </include>
+
+    <include file="$(find pointcloud_storer_ros)/launch/gazebo.launch"/>
+    <node pkg="rviz" type="rviz" name="rviz_point_storer" args="-d $(find pointcloud_storer_ros)/launch/rviz.rviz"/>
+    <node pkg="rviz" type="rviz" name="rviz_local_map" args="-d $(find pointcloud_storer_ros)/launch/local_map.rviz"/>
+    <node pkg="map_server" type="map_server" name="map_server" args="$(find emcl_ros)/maps/map.yaml"/>
+</launch>

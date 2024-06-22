@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="output" default="log" doc="screen or log"/>
+    <arg name="store_num" default="3"/>
+    <arg name="interval" default="0.5"/>
+    <arg name="leaf_size" default="0.05"/>
+    <arg name="cloud_topic" default="/cloud"/>
+    <arg name="robot_pose_topic" default="/robot_pose"/>
+    <node pkg="pointcloud_storer_ros" type="pointcloud_storer_node" name="pointcloud_storer" output="$(arg output)">
+        <param name="interval" value="$(arg interval)"/>
+        <param name="store_num" value="$(arg store_num)"/>
+        <param name="leaf_size" value="$(arg leaf_size)"/>
+        <remap from="/cloud" to="$(arg cloud_topic)"/>
+        <remap from="/robot_pose" to="$(arg robot_pose_topic)"/>
+    </node>
+</launch>
