@@ -15,11 +15,15 @@ The demo assumes that a portion of the scan data has been acquired, so the scan 
 - Ubuntu 20.04
 - ROS Noetic
 
+## Dependencies
+- [icp_matching_ros](https://github.com/ToshikiNakamura0412/icp_matching_ros.git)
+
 ## Install and Build
 ```
 # clone repository
 cd /path/to/your/catkin_ws/src
 git clone https://github.com/ToshikiNakamura0412/pointcloud_storer_ros.git
+git clone https://github.com/ToshikiNakamura0412/icp_matching_ros.git
 
 # build
 cd /path/to/your/catkin_ws
