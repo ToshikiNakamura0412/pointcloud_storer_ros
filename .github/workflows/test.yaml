@@ -7,10 +7,15 @@ on:
   pull_request:
     branches:
       - master
+  workflow_dispatch:
+  schedule: # monthly
+    - cron: '0 0 1 * *'
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    container:
+      image: ros:noetic-ros-base
     steps:
       - name: Checkout
         uses: actions/checkout@v3
